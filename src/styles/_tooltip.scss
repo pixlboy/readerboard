@@ -1,0 +1,40 @@
+/*Tooltip content and position*/
+.rb-tooltip-elm{
+    cursor: pointer;
+    position: relative;
+    .tooltip-content{
+        visibility: hidden;
+        background: $color-tooltip-bg;
+        color: $white-0;
+        border-radius: 8px;
+        position: absolute;
+        z-index: 1;
+        padding: 10px;
+        font-size: 12px;
+        top: 50%;
+        left: calc(100% + 10px);
+        width: 300px;
+        margin: 0 auto;
+        text-align: left;
+        display: table;
+        transform: translate(0,-50%);
+    }
+    /* Show the tooltip text when you mouse over the tooltip container */
+    &:hover{
+        .tooltip-content {
+            visibility: visible;
+            &::after{
+                content: "";
+                position: absolute;
+                top: 50%;
+                width: 0;
+                height: 0;
+                left: -8px;
+                transform: translate(0, -50%);
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-right: 8px solid $color-tooltip-bg;
+            }
+        }
+    }
+}

@@ -1,0 +1,290 @@
+<!--
+    Name : Readerboard Table Component
+    Author : Rachit Garg
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="dist/readerboard.css" />
+        <link rel="stylesheet" type="text/css" href="src/styles/base.css" />
+        <script src="node_modules/react/dist/react.js"></script>
+        <script src="node_modules/react-dom/dist/react-dom.js"></script>
+        <script src="node_modules/lodash/lodash.js"></script>
+        <title>Readerboard</title>
+    </head>
+    <body>
+        <div id="fullScreenElem">
+            <div id="table"></div>
+        </div>
+        <div id="controls">
+            <input type=button id="config" value="Config"/>
+            <input type=button id="fullScreen" value="Toggle screen" />
+        </div>
+        <div id="editScreen" style="display:none">
+            <input type="button" id="cancel" value="Cancel" />
+            <input type="button" id="save" value="Save"/>
+            <div id="savedViews"></div>
+            <div id="cols"></div>
+            <div id="rows"></div>
+        </div>
+    <script src="dist/readerboard.js"></script>
+    <script>
+        let preferences = {
+            "views" : [
+                {
+                    "default"       : false,
+                    "identifier"    : "Default",
+                    "config"        : {
+                        "selectedCols" : [],
+                        "selectedRows" : []
+                    }
+                },
+                {
+                    "default"       : true,
+                    "identifier"    : "Raja",
+                    "config"        : {
+                        "selectedCols" : ["A", "B", "C", "D"],
+                        "selectedRows" : ["English", "Hindi", "Maths", "Science"]
+                    }
+                },
+                {
+                    "default"       : false,
+                    "identifier"    : "Rachit",
+                    "config"        : {
+                        "selectedCols" : ["A", "B", "C", "D"],
+                        "selectedRows" : ["English", "Hindi", "Maths", "Science"]
+                    }
+                }
+            ],
+            "theme" : 'light',
+            "fullScreen" : false
+        };
+
+        let rbData = {
+            "English":{
+                "A":{
+                    value : 5, type : "danger"
+                },"B":{
+                    value : 35, type : "success"
+                },"C":{
+                    value : 15, type : "warning"
+                },"D":{
+                    value : 25, type : "info"
+                }
+            },
+            "Hindi":{"A":null,"B":null,"C":null,"D":null},
+            "Maths":{"A":65,"B":59,"C":14,"D":151},
+            "Science":{"A":7,"B":15,"C":5,"D":69}
+        };
+
+        let totalrows = [
+          {
+              "identifier": "English",
+              "displayString": "English",
+              "description": ""
+          },
+          {
+              "identifier": "Hindi",
+              "displayString": "Hindi",
+              "description": ""
+          },
+          {
+              "identifier": "Maths",
+              "displayString": "Maths",
+              "description": ""
+          },
+          {
+              "identifier": "Science",
+              "displayString": "Science",
+              "description": ""
+          }
+        ];
+
+        let totalcols = [
+            {"identifier":"A","displayString":"A","description":""},
+            {"identifier":"B","displayString":"B","description":""},
+            {"identifier":"C","displayString":"C","description":""},
+            {"identifier":"D","displayString":"D","description":""},
+        ];
+
+        let rows = composeConfig('rows');
+        let cols = composeConfig('cols');
+
+        function getTableConfig(options={}){
+            return {
+                startColumn: "Marksheet",
+                emptyCellText : "N/A",
+                tooltip : false,
+                tableRows: options.rows || rows,
+                tableCols : options.cols || cols,
+                tableData: options.data || rbData,
+                theme : options.theme || preferences.theme,
+                fullScreen : options.fullScreen || preferences.fullScreen
+            };
+        }
+
+        let factoryClass = React.createFactory(Readerboard.MainTable);
+        let root = factoryClass(getTableConfig());
+        ReactDOM.render(root, document.getElementById("table"));
+
+        let savedViewsClass = React.createFactory(Readerboard.SavedViews);
+        let savedViewsElm = savedViewsClass({
+            totalItems: preferences.views,
+            onSelectItemCb : onSelectItemCb,
+            onDeleteItemCb: onDeleteItemCb,
+            onAddItemCb: onAddItemCb
+        });
+
+        let workgroupClass = React.createFactory(Readerboard.ConfigChooser);
+        let attributeClass = React.createFactory(Readerboard.ConfigChooser);
+        let currentSelectedRows = _.filter(preferences.views, ['default', true])[0].config.selectedRows;
+        let currentSelectedCols = _.filter(preferences.views, ['default', true])[0].config.selectedCols;
+
+        function onSelectAttributeCb(newSelections){
+            let items = [];
+            let idx = _.findIndex(preferences.views, ['default', true]);
+            for(let i=0;i<newSelections.length;i++){
+                items.push(newSelections[i].identifier);
+            }
+            currentSelectedRows = items;
+        }
+
+        function onSelectWorkgroupCb(newSelections){
+            let items = [];
+            let idx = _.findIndex(preferences.views, ['default', true]);
+            for(let i=0;i<newSelections.length;i++){
+                items.push(newSelections[i].identifier);
+            }
+            currentSelectedCols = items;
+        }
+
+        function onAddItemCb(item){
+            item["config"] = {
+                "selectedCols" : _.filter(preferences.views, ['default', true])[0].config.selectedCols,
+                "selectedRows" : _.filter(preferences.views, ['default', true])[0].config.selectedRows
+            };
+            _.filter(preferences.views, ['default', true])[0].default = false;
+            preferences.views.push(item);
+            //TODO call API
+            rows = composeConfig('rows');
+            cols = composeConfig('cols');
+            root = factoryClass(getTableConfig());
+            ReactDOM.render(root, document.getElementById("table"));
+        }
+
+        function onDeleteItemCb(idx){
+            if(preferences.views[idx].default){
+                _.filter(preferences.views, ['identifier', 'Default'])[0].default = true;
+            }
+            preferences.views.splice(idx,1);
+            //TODO CALL API
+            rows = composeConfig('rows');
+            cols = composeConfig('cols');
+            root = factoryClass(getTableConfig());
+            ReactDOM.render(root, document.getElementById("table"));
+        }
+
+        function onSelectItemCb(idx){
+            _.filter(preferences.views, ['default', true])[0].default = false;
+            preferences.views[idx].default = true;
+            //TODO call API
+            currentSelectedRows = _.filter(preferences.views, ['default', true])[0].config.selectedRows;
+            currentSelectedCols = _.filter(preferences.views, ['default', true])[0].config.selectedCols;
+            rows = composeConfig('rows');
+            cols = composeConfig('cols');
+            root = factoryClass(getTableConfig());
+            ReactDOM.render(root, document.getElementById("table"));
+        }
+
+        function composeConfig(matrix){
+            let selection = [];
+            if(matrix === 'rows'){
+                let config = _.filter(preferences.views, ['default', true])[0].config.selectedRows;
+                for(let i=0;i<config.length;i++){
+                    selection.push(_.filter(totalrows, ['identifier', config[i]])[0])
+                }
+            } else if (matrix === 'cols'){
+                let config = _.filter(preferences.views, ['default', true])[0].config.selectedCols;
+                for(let i=0;i<config.length;i++){
+                    selection.push(_.filter(totalcols, ['identifier', config[i]])[0])
+                }
+            }
+            return selection;
+        }
+
+        let btnConfig = document.getElementById("config");
+        let btnSave = document.getElementById("save");
+        let btnCancel = document.getElementById("cancel");
+
+        btnConfig.addEventListener("click",()=>{
+            document.getElementById("editScreen").style.display = 'block';
+            rows = composeConfig('rows');
+            cols = composeConfig('cols');
+
+            let workgroupElm = workgroupClass({totalItems : totalcols, selectedItems : cols, onSelectItem : onSelectWorkgroupCb, tooltip : false});
+            ReactDOM.render(workgroupElm, document.getElementById("cols"));
+
+            let attributeElm = attributeClass({totalItems : totalrows, selectedItems : rows, onSelectItem : onSelectAttributeCb, tooltip : true});
+            ReactDOM.render(attributeElm, document.getElementById("rows"));
+
+            ReactDOM.render(savedViewsElm, document.getElementById("savedViews"));
+        });
+
+        btnSave.addEventListener("click",()=>{
+            document.getElementById("editScreen").style.display = 'none';
+            ReactDOM.unmountComponentAtNode(document.getElementById("cols"));
+            ReactDOM.unmountComponentAtNode(document.getElementById("rows"));
+            ReactDOM.unmountComponentAtNode(document.getElementById("savedViews"));
+            _.filter(preferences.views, ['default', true])[0].config.selectedRows = currentSelectedRows;
+            _.filter(preferences.views, ['default', true])[0].config.selectedCols = currentSelectedCols;
+            rows = composeConfig('rows');
+            cols = composeConfig('cols');
+            root = factoryClass(getTableConfig());
+            ReactDOM.render(root, document.getElementById("table"));
+        });
+
+        btnCancel.addEventListener("click",()=>{
+            document.getElementById("editScreen").style.display = 'none';
+            ReactDOM.unmountComponentAtNode(document.getElementById("cols"));
+            ReactDOM.unmountComponentAtNode(document.getElementById("rows"));
+            ReactDOM.unmountComponentAtNode(document.getElementById("savedViews"));
+        });
+
+        function toggleFullScreen(){
+            var elem = document.getElementById('fullScreenElem');
+            if(document.webkitFullscreenElement) {
+                root = factoryClass(getTableConfig({
+                    theme : 'light',
+                    fullScreen : false
+                }));
+                ReactDOM.render(root, document.getElementById("table"));
+                document.webkitCancelFullScreen();
+            } else {
+                root = factoryClass(getTableConfig({
+                    theme : 'dark',
+                    fullScreen : true
+                }));
+                ReactDOM.render(root, document.getElementById("table"));
+                elem.webkitRequestFullScreen();
+            };
+        }
+
+        document.addEventListener("webkitfullscreenchange", function(e) {
+            if(!document.webkitFullscreenElement) {
+                root = factoryClass(getTableConfig({
+                    theme : 'light',
+                    fullScreen : false
+                }));
+                ReactDOM.render(root, document.getElementById("table"));
+                document.webkitCancelFullScreen();
+            }
+        }, false);
+
+        document.getElementById("fullScreen").addEventListener("click",(e) => {
+            toggleFullScreen();
+        }, false);
+
+    </script>
+  </body>
+</html>

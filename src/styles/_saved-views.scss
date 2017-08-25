@@ -1,0 +1,69 @@
+.rb-saved-views-wrapper{
+    display: inline-block;
+    .duplicate-name{
+        font-size: 1.2vw;
+        color: $red-1;
+        margin: 5px 0 0 0;
+    }
+    .save-view{
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        .save-view-input{
+            @extend .rb-input;
+            width: 16vw;
+            float: left;
+            padding: 5px 10px;
+            height: 2.5vw;
+            border: 2px solid $grey-4 !important;
+            background: $grey-2;
+            border-radius: 0 !important;
+            color: $white-0;
+            font-size: 1.2vw;
+        }
+    }
+    .saved-list{
+        margin: 0 0 10px 0;
+        .list-item{
+            position: relative;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: $white-0;
+            clear: both;
+            padding: 4px;
+            overflow: hidden;
+            margin-bottom: 4px;
+            .selector{
+                width: 1vw;
+                height: 1vw;
+                border: 2px solid $grey-1;
+                border-radius: 50%;
+                margin: 0 8px 0 0;
+            }
+            &.current-view{
+                .selector{
+                    border: 3px solid $green-1;
+                }
+            }
+            .item-name{
+                font-size: 1.2vw;
+            }
+            .delete-btn{
+                @extend .rb-material-icons;
+                font-style: normal;
+                color: $white-0;
+                position: absolute;
+                right: 0.2vw;
+                &:after{
+                    content: "delete";
+                    font-size: 1vw;
+                }
+                &:hover{
+                    color: $red-1;
+                }
+            }
+        }
+    }
+}

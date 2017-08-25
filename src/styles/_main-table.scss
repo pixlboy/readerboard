@@ -1,0 +1,217 @@
+$cell-types : (success, danger, warning, info);
+
+$themes: (
+    dark  : (
+        thead-color     : #ffffff,
+        tbody-color     : #ffffff,
+        thead-bg        : #1c2c39,
+        border-color    : #626d76,
+        row-even-bg     : #294053,
+        row-odd-bg      : #294053,
+        col-1-color     : #f6a623,
+        success-bg      : #0fc382,
+        success-color   : #ffffff,
+        success-border  : #626d76,
+        danger-bg       : #ed5e65,
+        danger-color    : #ffffff,
+        danger-border   : #626d76,
+        warning-bg      : #e2b472,
+        warning-color   : #ffffff,
+        warning-border  : #626d76,
+        info-bg         : #5cb1ca,
+        info-color      : #ffffff,
+        info-border     : #626d76,
+        cell-border     : 1px
+    ),
+    light : (
+        thead-color     : #4b5b68,
+        thead-bg        : #eaf4f8,
+        border-color    : #ffffff,
+        row-even-bg     : #f6f6f6,
+        row-odd-bg      : #ffffff,
+        tbody-color     : #000000,
+        col-1-color     : #939393,
+        success-bg      : #dff0d8,
+        success-color   : #60ad19,
+        success-border  : #d0e9c6,
+        danger-bg       : #f2dede,
+        danger-color    : #973133,
+        danger-border   : #ebcccc,
+        warning-bg      : #fcf8e3,
+        warning-color   : #d58512,
+        warning-border  : #f7d6a7,
+        info-bg         : #d9edf7,
+        info-color      : #269abc,
+        info-border     : #8be5ff,
+        cell-border     : 1px
+    )
+);
+$empty-body-height: 161px;
+$max-columns: 6;
+$cell-font: 14px;
+$fullscreen-cell-font: 1.98vw;
+$cell-height: 40px;
+$fullscreen-cell-height: 100px; //calc((100vh - 250px)/10 - 10px);
+$fullscreen-head-height: 150px;
+$first-col-width: 150px;
+$fullscreen-first-col-width: 400px;
+$fullscreen-col-width: calc((100vw - 400px)/#{$max-columns});
+$fullscreen-first-cell-bg: #0a151d;
+
+.rb-table-wrapper{
+    position: relative;
+    .scroll-wrapper{
+        overflow-x: auto;
+        margin-left: $first-col-width;
+        .fullscreen &{
+            overflow: hidden;
+            margin-left: $fullscreen-first-col-width;
+        }
+    }
+    table {
+        border-spacing: 0;
+        width:100%;
+        font-size: $cell-font;
+        border-collapse: separate;
+        .fullscreen &{
+            font-size: $fullscreen-cell-font;
+        }
+        .table-head {
+            font-weight: 700;
+            .table-hrow {
+                .head-cell {
+                    @extend .table-cell;
+                    &.table-first-col{
+                        @extend .table-first-col;
+                        padding-left: 30px;
+                    }
+                    .fullscreen &{
+                        height: $fullscreen-head-height;
+                        word-break: break-all;
+                        white-space: normal !important;
+                        min-width: $fullscreen-col-width;
+                    }
+                    white-space: nowrap;
+                    @each $theme, $map in $themes {
+                        .#{$theme} &{
+                            background: map-get($map, thead-bg);
+                            color: map-get($map, thead-color) !important;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+
+        .table-body {
+            &.empty-tbody{
+                height: $empty-body-height;
+                display: block;
+            }
+            @each $theme, $map in $themes {
+                .#{$theme} &{
+                    border-color: map-get($map, border-color);
+                }
+            }
+            tr {
+                .body-cell {
+                    @extend .table-cell;
+                    .fullscreen &{
+                        height: $fullscreen-cell-height;
+                        padding-left: 30px;
+                    }
+                    @each $type, $map in $cell-types{
+                        &.#{$type}{
+                            @extend .type-#{$type};
+                        }
+                    }
+                    &.table-first-col{
+                        text-align: left;
+                        @each $theme, $map in $themes {
+                            .#{$theme} &{
+                                color: map-get($map, col-1-color);
+                            }
+                        }
+                    }
+                }
+
+                &:nth-child(even) {
+                    .body-cell {
+                        @each $theme, $map in $themes {
+                            .#{$theme} &{
+                                background: map-get($map, row-even-bg);
+                            }
+                        }
+                    }
+                }
+
+                &:nth-child(odd) {
+                    .body-cell {
+                        @each $theme, $map in $themes {
+                            .#{$theme} &{
+                                background: map-get($map, row-odd-bg);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .table-cell{
+        border-width: 1px;
+        border-style: solid;
+        padding: 5px 10px;
+        text-align: center;
+        text-transform: capitalize;
+        height:$cell-height;
+        vertical-align: middle;
+        @each $theme, $map in $themes {
+            .#{$theme} &{
+                color: map-get($map, tbody-color);
+                border-color: map-get($map, border-color);
+            }
+        }
+    }
+    .table-first-col{
+        text-align: left;
+        width: $first-col-width;
+        position: absolute;
+        left:0;
+        display: table;
+        .col-freeze-content{
+            display: table-cell;
+            vertical-align:middle;
+        }
+        .fullscreen &{
+            background: $fullscreen-first-cell-bg;
+            min-width: $fullscreen-first-col-width;
+        }
+    }
+    .empty-row{
+        .body-cell{
+            width: 100%;
+            height: 150px !important;
+            padding-top: 50px !important;
+            .icon{
+                @extend .rb-material-icons;
+                &:after{
+                    content: "feedback";
+                    font-size: 60px;
+                }
+            }
+        }
+    }
+
+    @each $type, $map in $cell-types{
+        .type-#{$type}{
+            @each $theme, $map in $themes {
+                .#{$theme} &{
+                    font-weight: 700;
+                    color: map-get($map, #{$type}-color);
+                    background: map-get($map, #{$type}-bg) !important;
+                    border-color: map-get($map, #{$type}-border);
+                }
+            }
+        }
+    }
+}

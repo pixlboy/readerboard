@@ -1,0 +1,375 @@
+/**
+ * Name : Marksheet Table Component
+ * Author : Rachit Garg
+ */
+.rb-table-wrapper {
+  position: relative; }
+  .rb-table-wrapper .scroll-wrapper {
+    overflow-x: auto;
+    margin-left: 150px; }
+    .fullscreen .rb-table-wrapper .scroll-wrapper {
+      overflow: hidden;
+      margin-left: 400px; }
+  .rb-table-wrapper table {
+    border-spacing: 0;
+    width: 100%;
+    font-size: 14px;
+    border-collapse: separate; }
+    .fullscreen .rb-table-wrapper table {
+      font-size: 1.98vw; }
+    .rb-table-wrapper table .table-head {
+      font-weight: 700; }
+      .rb-table-wrapper table .table-head .table-hrow .head-cell {
+        white-space: nowrap; }
+        .rb-table-wrapper table .table-head .table-hrow .head-cell.table-first-col {
+          padding-left: 30px; }
+        .fullscreen .rb-table-wrapper table .table-head .table-hrow .head-cell {
+          height: 150px;
+          word-break: break-all;
+          white-space: normal !important;
+          min-width: calc((100vw - 400px)/6); }
+        .dark .rb-table-wrapper table .table-head .table-hrow .head-cell {
+          background: #1c2c39;
+          color: #ffffff !important;
+          text-align: center; }
+        .light .rb-table-wrapper table .table-head .table-hrow .head-cell {
+          background: #eaf4f8;
+          color: #4b5b68 !important;
+          text-align: center; }
+    .rb-table-wrapper table .table-body.empty-tbody {
+      height: 161px;
+      display: block; }
+    .dark .rb-table-wrapper table .table-body {
+      border-color: #626d76; }
+    .light .rb-table-wrapper table .table-body {
+      border-color: #ffffff; }
+    .fullscreen .rb-table-wrapper table .table-body tr .body-cell {
+      height: 100px;
+      padding-left: 30px; }
+    .rb-table-wrapper table .table-body tr .body-cell.table-first-col, .rb-table-wrapper table .table-body tr .table-head .table-hrow .body-cell.head-cell.table-first-col, .rb-table-wrapper table .table-head .table-hrow .table-body tr .body-cell.head-cell.table-first-col {
+      text-align: left; }
+      .dark .rb-table-wrapper table .table-body tr .body-cell.table-first-col {
+        color: #f6a623; }
+      .light .rb-table-wrapper table .table-body tr .body-cell.table-first-col {
+        color: #939393; }
+    .dark .rb-table-wrapper table .table-body tr:nth-child(even) .body-cell {
+      background: #294053; }
+    .light .rb-table-wrapper table .table-body tr:nth-child(even) .body-cell {
+      background: #f6f6f6; }
+    .dark .rb-table-wrapper table .table-body tr:nth-child(odd) .body-cell {
+      background: #294053; }
+    .light .rb-table-wrapper table .table-body tr:nth-child(odd) .body-cell {
+      background: #ffffff; }
+  .rb-table-wrapper .table-cell, .rb-table-wrapper table .table-head .table-hrow .head-cell, .rb-table-wrapper table .table-body tr .body-cell {
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px 10px;
+    text-align: center;
+    text-transform: capitalize;
+    height: 40px;
+    vertical-align: middle; }
+    .dark .rb-table-wrapper .table-cell, .dark .rb-table-wrapper table .table-head .table-hrow .head-cell, .dark .rb-table-wrapper table .table-body tr .body-cell {
+      color: #ffffff;
+      border-color: #626d76; }
+    .light .rb-table-wrapper .table-cell, .light .rb-table-wrapper table .table-head .table-hrow .head-cell, .light .rb-table-wrapper table .table-body tr .body-cell {
+      color: #000000;
+      border-color: #ffffff; }
+  .rb-table-wrapper .table-first-col, .rb-table-wrapper table .table-head .table-hrow .head-cell.table-first-col {
+    text-align: left;
+    width: 150px;
+    position: absolute;
+    left: 0;
+    display: table; }
+    .rb-table-wrapper .table-first-col .col-freeze-content, .rb-table-wrapper table .table-head .table-hrow .head-cell.table-first-col .col-freeze-content {
+      display: table-cell;
+      vertical-align: middle; }
+    .fullscreen .rb-table-wrapper .table-first-col, .fullscreen .rb-table-wrapper table .table-head .table-hrow .head-cell.table-first-col {
+      background: #0a151d;
+      min-width: 400px; }
+  .rb-table-wrapper .empty-row .body-cell {
+    width: 100%;
+    height: 150px !important;
+    padding-top: 50px !important; }
+    .rb-table-wrapper .empty-row .body-cell .icon:after {
+      content: "feedback";
+      font-size: 60px; }
+  .dark .rb-table-wrapper .type-success, .dark .rb-table-wrapper table .table-body tr .body-cell.success {
+    font-weight: 700;
+    color: #ffffff;
+    background: #0fc382 !important;
+    border-color: #626d76; }
+  .light .rb-table-wrapper .type-success, .light .rb-table-wrapper table .table-body tr .body-cell.success {
+    font-weight: 700;
+    color: #60ad19;
+    background: #dff0d8 !important;
+    border-color: #d0e9c6; }
+  .dark .rb-table-wrapper .type-danger, .dark .rb-table-wrapper table .table-body tr .body-cell.danger {
+    font-weight: 700;
+    color: #ffffff;
+    background: #ed5e65 !important;
+    border-color: #626d76; }
+  .light .rb-table-wrapper .type-danger, .light .rb-table-wrapper table .table-body tr .body-cell.danger {
+    font-weight: 700;
+    color: #973133;
+    background: #f2dede !important;
+    border-color: #ebcccc; }
+  .dark .rb-table-wrapper .type-warning, .dark .rb-table-wrapper table .table-body tr .body-cell.warning {
+    font-weight: 700;
+    color: #ffffff;
+    background: #e2b472 !important;
+    border-color: #626d76; }
+  .light .rb-table-wrapper .type-warning, .light .rb-table-wrapper table .table-body tr .body-cell.warning {
+    font-weight: 700;
+    color: #d58512;
+    background: #fcf8e3 !important;
+    border-color: #f7d6a7; }
+  .dark .rb-table-wrapper .type-info, .dark .rb-table-wrapper table .table-body tr .body-cell.info {
+    font-weight: 700;
+    color: #ffffff;
+    background: #5cb1ca !important;
+    border-color: #626d76; }
+  .light .rb-table-wrapper .type-info, .light .rb-table-wrapper table .table-body tr .body-cell.info {
+    font-weight: 700;
+    color: #269abc;
+    background: #d9edf7 !important;
+    border-color: #8be5ff; }
+
+.rb-config-chooser .heading {
+  color: #7e7e7e;
+  font-size: 14px; }
+
+.rb-config-chooser .selected-items {
+  text-transform: capitalize;
+  margin: 5px 0 10px 0;
+  height: 60px;
+  overflow-y: auto; }
+  .rb-config-chooser .selected-items .bullet {
+    border: 1px solid #d6d6d6;
+    background: #f6f6f6;
+    height: 22px;
+    border-radius: 11px;
+    color: #40515e;
+    font-size: 14px;
+    display: inline-block;
+    padding: 2px 25px 1px 8px;
+    margin: 5px 5px 0 0;
+    position: relative; }
+    .rb-config-chooser .selected-items .bullet .icon {
+      position: absolute;
+      right: 5px;
+      top: 2px; }
+      .rb-config-chooser .selected-items .bullet .icon:hover {
+        color: #d04437; }
+      .rb-config-chooser .selected-items .bullet .icon:after {
+        content: "close";
+        font-style: normal;
+        cursor: pointer; }
+
+.rb-config-chooser .search-box {
+  padding: 5px 10px;
+  height: 34px;
+  width: 100%;
+  margin: 0 0 15px 0; }
+
+.rb-config-chooser .list-wrapper {
+  height: 18vh;
+  overflow: hidden; }
+
+.rb-config-chooser .quick-filters-list {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: #f6f6f6;
+  padding: 10px 0 10px 5px;
+  border-right: 1px solid #e9e9e9;
+  margin: 0 40px 0 0; }
+  .rb-config-chooser .quick-filters-list .list-item {
+    padding: 10px 0 10px 6px;
+    border-top: 1px solid #bebebe;
+    color: #3493c2;
+    cursor: pointer;
+    position: relative;
+    left: 1px;
+    font-size: 14px; }
+    .rb-config-chooser .quick-filters-list .list-item:last-child {
+      border-bottom: 1px solid #bebebe; }
+    .rb-config-chooser .quick-filters-list .list-item.selected-item {
+      border-right: 1px solid #ffffff;
+      background: #ffffff;
+      border-left: 1px solid #bebebe; }
+
+.rb-config-chooser .list-container {
+  height: 100%;
+  overflow-y: auto;
+  padding: 10px 5px;
+  overflow-x: hidden; }
+  .rb-config-chooser .list-container .list-item {
+    text-transform: capitalize;
+    clear: both;
+    margin: 0 30px 12px 0; }
+    .rb-config-chooser .list-container .list-item p {
+      margin: 0;
+      cursor: pointer;
+      display: table; }
+      .rb-config-chooser .list-container .list-item p .item-name {
+        color: #ffffff;
+        float: left;
+        margin-left: 10px;
+        line-height: 1.6vw;
+        font-size: 1.2vw; }
+      .rb-config-chooser .list-container .list-item p .item-checkbox {
+        float: left; }
+
+.rb-saved-views-wrapper {
+  display: inline-block; }
+  .rb-saved-views-wrapper .duplicate-name {
+    font-size: 1.2vw;
+    color: #d04437;
+    margin: 5px 0 0 0; }
+  .rb-saved-views-wrapper .save-view {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative; }
+    .rb-saved-views-wrapper .save-view .save-view-input {
+      width: 16vw;
+      float: left;
+      padding: 5px 10px;
+      height: 2.5vw;
+      border: 2px solid #4e5c65 !important;
+      background: #05080b;
+      border-radius: 0 !important;
+      color: #ffffff;
+      font-size: 1.2vw; }
+  .rb-saved-views-wrapper .saved-list {
+    margin: 0 0 10px 0; }
+    .rb-saved-views-wrapper .saved-list .list-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: #ffffff;
+      clear: both;
+      padding: 4px;
+      overflow: hidden;
+      margin-bottom: 4px; }
+      .rb-saved-views-wrapper .saved-list .list-item .selector {
+        width: 1vw;
+        height: 1vw;
+        border: 2px solid #bcbcbc;
+        border-radius: 50%;
+        margin: 0 8px 0 0; }
+      .rb-saved-views-wrapper .saved-list .list-item.current-view .selector {
+        border: 3px solid #4cc65d; }
+      .rb-saved-views-wrapper .saved-list .list-item .item-name {
+        font-size: 1.2vw; }
+      .rb-saved-views-wrapper .saved-list .list-item .delete-btn {
+        font-style: normal;
+        color: #ffffff;
+        position: absolute;
+        right: 0.2vw; }
+        .rb-saved-views-wrapper .saved-list .list-item .delete-btn:after {
+          content: "delete";
+          font-size: 1vw; }
+        .rb-saved-views-wrapper .saved-list .list-item .delete-btn:hover {
+          color: #d04437; }
+
+/*Tooltip content and position*/
+.rb-tooltip-elm {
+  cursor: pointer;
+  position: relative;
+  /* Show the tooltip text when you mouse over the tooltip container */ }
+  .rb-tooltip-elm .tooltip-content {
+    visibility: hidden;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 1;
+    padding: 10px;
+    font-size: 12px;
+    top: 50%;
+    left: calc(100% + 10px);
+    width: 300px;
+    margin: 0 auto;
+    text-align: left;
+    display: table;
+    transform: translate(0, -50%); }
+  .rb-tooltip-elm:hover .tooltip-content {
+    visibility: visible; }
+    .rb-tooltip-elm:hover .tooltip-content::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 0;
+      height: 0;
+      left: -8px;
+      transform: translate(0, -50%);
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-right: 8px solid rgba(0, 0, 0, 0.8); }
+
+.rb-text-center {
+  text-align: center !important; }
+
+.rb-list {
+  padding: 0;
+  margin: 0; }
+  .rb-list li {
+    list-style-type: none; }
+
+.rb-block {
+  display: block; }
+
+.rb-material-icons, .rb-table-wrapper .empty-row .body-cell .icon, .rb-config-chooser .selected-items .bullet .icon, .rb-saved-views-wrapper .saved-list .list-item .delete-btn, .rb-checkbox.selected:after, .rb-config-chooser .list-container .list-item p .selected.item-checkbox:after {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 17px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga'; }
+
+.rb-show-me {
+  display: block; }
+
+.rb-hide-me {
+  display: none; }
+
+.rb-error-msg {
+  color: #d04437; }
+
+.rb-input, .rb-config-chooser .search-box, .rb-saved-views-wrapper .save-view .save-view-input {
+  outline: none;
+  color: #ffffff;
+  border: 1px solid #4e5c65; }
+
+.rb-checkbox, .rb-config-chooser .list-container .list-item p .item-checkbox {
+  width: 1.6vw;
+  height: 1.6vw;
+  display: inline-block;
+  border-radius: 4px;
+  border: solid 2px #ffffff; }
+  .rb-checkbox.selected, .rb-config-chooser .list-container .list-item p .selected.item-checkbox {
+    background: #4cc65d; }
+    .rb-checkbox.selected:after, .rb-config-chooser .list-container .list-item p .selected.item-checkbox:after {
+      content: "check";
+      font-size: 1.4vw;
+      color: #ffffff;
+      font-weight: 700;
+      left: 0;
+      position: relative;
+      top: 0; }

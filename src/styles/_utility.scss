@@ -1,0 +1,70 @@
+.rb-text-center{
+    text-align: center !important;
+}
+.rb-list{
+    padding:0;
+    margin:0;
+    li{
+        list-style-type: none;
+    }
+}
+.rb-block{
+    display:block;
+}
+.rb-material-icons{
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 17px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+.rb-show-me{
+    display:block;
+}
+.rb-hide-me{
+    display: none;
+}
+.rb-error-msg{
+    color: $red-1;
+}
+.rb-input{
+    outline:none;
+    color: $white-0;
+    border: 1px solid $grey-4;
+}
+.rb-checkbox{
+    width: 1.6vw;
+    height: 1.6vw;
+    display: inline-block;
+    border-radius: 4px;
+    border: solid 2px $white-0;
+    &.selected{
+        background: $green-1;
+        &:after{
+            @extend .rb-material-icons;
+            content: "check";
+            font-size: 1.4vw;
+            color:$white-0;
+            font-weight: 700;
+            left: 0;
+            position: relative;
+            top: 0;
+        }
+    }
+}

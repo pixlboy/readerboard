@@ -1,0 +1,102 @@
+.rb-config-chooser {
+    .heading{
+        color: $grey-5;
+        font-size: 14px;
+    }
+    .selected-items{
+        text-transform: capitalize;
+        margin: 5px 0 10px 0;
+        height: 60px;
+        overflow-y: auto;
+        .bullet{
+            border: 1px solid $grey-6;
+            background: $grey-7;
+            height: 22px;
+            border-radius: 11px;
+            color: $black-1;
+            font-size: 14px;
+            display: inline-block;
+            padding: 2px 25px 1px 8px;
+            margin: 5px 5px 0 0;
+			position: relative;
+            .icon{
+                @extend .rb-material-icons;
+				position: absolute;
+				right: 5px;
+				top: 2px;
+                &:hover{
+                    color: $red-1;
+                }
+                &:after{
+                    content: "close";
+                    font-style: normal;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .search-box{
+        @extend .rb-input;
+        padding: 5px 10px;
+        height: 34px;
+        width: 100%;
+        margin:0 0 15px 0;
+    }
+    .list-wrapper{
+        height: 18vh;
+        overflow: hidden;
+    }
+    .quick-filters-list{
+        height: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        background: $grey-7;
+        padding: 10px 0 10px 5px;
+        border-right: 1px solid $grey-9;
+        margin:0 40px 0 0;
+        .list-item{
+            padding:10px 0 10px 6px;
+            border-top: 1px solid $grey-8;
+            color: $blue-3;
+            cursor: pointer;
+            position: relative;
+            left: 1px;
+            font-size: 14px;
+            &:last-child{
+                border-bottom: 1px solid $grey-8;
+            }
+            &.selected-item{
+                border-right: 1px solid $white-0;
+                background: $white-0;
+                border-left: 1px solid $grey-8;
+            }
+        }
+    }
+    .list-container{
+        height: 100%;
+        overflow-y: auto;
+        padding: 10px 5px;
+        overflow-x: hidden;
+        .list-item{
+            text-transform: capitalize;
+            clear: both;
+            margin: 0 30px 12px 0;
+            p{
+                margin: 0;
+                cursor: pointer;
+                display: table;
+                .item-name{
+                    color: $white-0;
+                    float:left;
+                    margin-left:10px;
+                    line-height: 1.6vw;
+                    font-size: 1.2vw;
+                }
+                .item-checkbox{
+                    @extend .rb-checkbox;
+                    float:left;
+                }
+            }
+        }
+    }
+}
