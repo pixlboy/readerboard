@@ -5,6 +5,7 @@ A table component build in ES6 and React.
 
 1. Install node JS in your system.
 2. Download or clone the repository.
+4. Open terminal and navigate to folder containing the component.
 3. Run npm install
 4. Run npm run dev
 5. Run npm start
