@@ -1,5 +1,5 @@
 /**
- * Name : Marksheet Table Component
+ * Name : Readerboard
  * Author : Rachit Garg
  */
 import "styles/styles.scss";
@@ -8,7 +8,7 @@ import {ConfigChooser} from "scripts/config-chooser";
 import {SavedViews} from "scripts/saved-views";
 
 MainTable.defaultProps = {
-    startColumn : "Subjects",
+    startColumn : "Workgroups",
     theme : 'light',
     emptyCellText : "N/A",
     tooltip : false,
@@ -24,11 +24,13 @@ ConfigChooser.defaultProps = {
     quickFilters: false,
     search: false,
     bullets: false,
-    tooltip: false
+    tooltip: false,
+    fullScreen: false
 };
 
 SavedViews.defaultProps = {
-    totalItems : []
+    totalItems: [],
+    fullScreen: false
 };
 
 export {MainTable, ConfigChooser, SavedViews};

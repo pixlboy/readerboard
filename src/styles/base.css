@@ -1,7 +1,3 @@
-/**
- * Name : Marksheet Table Component
- * Author : Rachit Garg
- */
 @font-face {
     font-family: 'Material Icons';
     font-style: normal;
@@ -24,15 +20,17 @@ body{
     height:100%;
     background: #1c2c39;
 }
-#workgroups{
+#cols{
     width:50%;
     float:left;
     padding: 0 40px 0 0;
+	background: #fff
 }
 
-#attributes{
+#rows{
     width:50%;
     float:left;
+	background: #fff
 }
 
 #savedViews{

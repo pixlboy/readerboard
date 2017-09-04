@@ -1,5 +1,5 @@
 /**
- * Name : Marksheet Table Component
+ * Name : JTACWB readerboard table
  * Author : Rachit Garg
  */
 'use strict';
@@ -14,18 +14,18 @@ export class MainTable extends React.Component {
     }
 
     addEmptyCell(){
-        return <td className="body-cell rb-text-center">Please select some items</td>
+        return <td className="body-cell rb-text-center">Please select some workgroups</td>
     }
 
     addEmptyHeaderCell(){
-        return <th className="head-cell rb-text-center">Please select some items</th>
+        return <th className="head-cell rb-text-center">Please select some workgroups</th>
     }
 
     addEmptyRow(){
         return <tr className="empty-row">
             <td className="table-first-col body-cell rb-text-center">
                 <span className="icon"></span>
-                <p>Please select some items</p>
+                <p>Please select some attributes</p>
             </td>
         </tr>
     }
@@ -39,18 +39,28 @@ export class MainTable extends React.Component {
         return cells;
     }
 
-    // calculateColumnWidth(){
-    //     let width = this.scroller.offsetWidth;
-    //     if(this.props.tableCols.length > 5){
-    //         this.setState({
-    //             cellWidth : Math.ceil(width/5)
-    //         });
-    //     } else{
-    //         this.setState({
-    //             cellWidth : Math.ceil(width/this.props.tableCols.length)
-    //         });
-    //     }
-    // }
+    calculateColumnWidth(){
+        let width = this.scroller.offsetWidth;
+        if(this.props.tableCols.length > 5){
+            this.setState({
+                cellWidth : Math.ceil(width/5)
+            });
+        } else{
+            this.setState({
+                cellWidth : Math.ceil(width/this.props.tableCols.length)
+            });
+        }
+    }
+
+    componentDidMount() {
+        //this.calculateColumnWidth();
+    }
+
+    componentWillReceiveProps(){
+        // setTimeout(() => {
+        //     this.calculateColumnWidth();
+        // }, 500);
+    }
 
     render() {
         let tableClasses = classNames(

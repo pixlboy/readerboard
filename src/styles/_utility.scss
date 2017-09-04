@@ -15,7 +15,6 @@
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 17px;  /* Preferred icon size */
     display: inline-block;
     line-height: 1;
     text-transform: none;
@@ -42,29 +41,4 @@
 }
 .rb-error-msg{
     color: $red-1;
-}
-.rb-input{
-    outline:none;
-    color: $white-0;
-    border: 1px solid $grey-4;
-}
-.rb-checkbox{
-    width: 1.6vw;
-    height: 1.6vw;
-    display: inline-block;
-    border-radius: 4px;
-    border: solid 2px $white-0;
-    &.selected{
-        background: $green-1;
-        &:after{
-            @extend .rb-material-icons;
-            content: "check";
-            font-size: 1.4vw;
-            color:$white-0;
-            font-weight: 700;
-            left: 0;
-            position: relative;
-            top: 0;
-        }
-    }
 }

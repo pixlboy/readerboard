@@ -1,100 +1,254 @@
 .rb-config-chooser {
-    .heading{
-        color: $grey-5;
-        font-size: 14px;
-    }
-    .selected-items{
-        text-transform: capitalize;
-        margin: 5px 0 10px 0;
-        height: 60px;
-        overflow-y: auto;
-        .bullet{
-            border: 1px solid $grey-6;
-            background: $grey-7;
-            height: 22px;
-            border-radius: 11px;
-            color: $black-1;
+    box-sizing: border-box;
+    &.fullscreen{
+        .heading{
+            color: $grey-5;
             font-size: 14px;
-            display: inline-block;
-            padding: 2px 25px 1px 8px;
-            margin: 5px 5px 0 0;
-			position: relative;
-            .icon{
-                @extend .rb-material-icons;
-				position: absolute;
-				right: 5px;
-				top: 2px;
-                &:hover{
-                    color: $red-1;
-                }
-                &:after{
-                    content: "close";
-                    font-style: normal;
-                    cursor: pointer;
-                }
-            }
         }
-    }
-    .search-box{
-        @extend .rb-input;
-        padding: 5px 10px;
-        height: 34px;
-        width: 100%;
-        margin:0 0 15px 0;
-    }
-    .list-wrapper{
-        height: 18vh;
-        overflow: hidden;
-    }
-    .quick-filters-list{
-        height: 100%;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        background: $grey-7;
-        padding: 10px 0 10px 5px;
-        border-right: 1px solid $grey-9;
-        margin:0 40px 0 0;
-        .list-item{
-            padding:10px 0 10px 6px;
-            border-top: 1px solid $grey-8;
-            color: $blue-3;
-            cursor: pointer;
-            position: relative;
-            left: 1px;
-            font-size: 14px;
-            &:last-child{
-                border-bottom: 1px solid $grey-8;
-            }
-            &.selected-item{
-                border-right: 1px solid $white-0;
-                background: $white-0;
-                border-left: 1px solid $grey-8;
-            }
-        }
-    }
-    .list-container{
-        height: 100%;
-        overflow-y: auto;
-        padding: 10px 5px;
-        overflow-x: hidden;
-        .list-item{
+        .selected-items{
             text-transform: capitalize;
-            clear: both;
-            margin: 0 30px 12px 0;
-            p{
-                margin: 0;
-                cursor: pointer;
-                display: table;
-                .item-name{
-                    color: $white-0;
-                    float:left;
-                    margin-left:10px;
-                    line-height: 1.6vw;
-                    font-size: 1.2vw;
+            margin: 5px 0 10px 0;
+            height: 60px;
+            overflow-y: auto;
+            .bullet{
+                border: 1px solid $grey-6;
+                background: $grey-7;
+                height: 22px;
+                border-radius: 11px;
+                color: $black-1;
+                font-size: 14px;
+                display: inline-block;
+                padding: 2px 25px 1px 8px;
+                margin: 5px 5px 0 0;
+    			position: relative;
+                .icon{
+                    @extend .rb-material-icons;
+    				position: absolute;
+    				right: 5px;
+    				top: 2px;
+                    &:hover{
+                        color: $red-1;
+                    }
+                    &:after{
+                        content: "close";
+                        font-style: normal;
+                        cursor: pointer;
+                    }
                 }
-                .item-checkbox{
-                    @extend .rb-checkbox;
-                    float:left;
+            }
+        }
+        .search-box{
+            outline:none;
+            color: $white-0;
+            border: 1px solid $grey-4;
+            padding: 5px 10px;
+            height: 34px;
+            width: 100%;
+            margin:0 0 15px 0;
+        }
+        .list-wrapper{
+            height: 18vh;
+            overflow: hidden;
+        }
+        .quick-filters-list{
+            height: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            background: $grey-7;
+            padding: 10px 0 10px 5px;
+            border-right: 1px solid $grey-9;
+            margin:0 40px 0 0;
+            .list-item{
+                padding:10px 0 10px 6px;
+                border-top: 1px solid $grey-8;
+                color: $blue-3;
+                cursor: pointer;
+                position: relative;
+                left: 1px;
+                font-size: 14px;
+                &:last-child{
+                    border-bottom: 1px solid $grey-8;
+                }
+                &.selected-item{
+                    border-right: 1px solid $white-0;
+                    background: $white-0;
+                    border-left: 1px solid $grey-8;
+                }
+            }
+        }
+        .list-container{
+            height: 100%;
+            overflow-y: auto;
+            padding: 10px 5px;
+            overflow-x: hidden;
+            .list-item{
+                text-transform: capitalize;
+                clear: both;
+                margin: 0 30px 12px 0;
+                p{
+                    margin: 0;
+                    cursor: pointer;
+                    display: table;
+                    .item-name{
+                        color: $white-0;
+                        float:left;
+                        margin-left:10px;
+                        line-height: 1.6vw;
+                        font-size: 1.2vw;
+                    }
+                    .item-checkbox{
+                        width: 1.6vw;
+                        height: 1.6vw;
+                        display: inline-block;
+                        border-radius: 4px;
+                        border: solid 2px $white-0;
+                        float:left;
+                        &.selected{
+                            background: $green-1;
+                            &:after{
+                                @extend .rb-material-icons;
+                                content: "check";
+                                font-size: 1.4vw;
+                                color:$white-0;
+                                font-weight: 700;
+                                left: 0;
+                                position: relative;
+                                top: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.normalscreen{
+        .heading{
+            color: $grey-5;
+            font-size: 14px;
+        }
+        .selected-items{
+            text-transform: capitalize;
+            margin: 5px 0 10px 0;
+            height: 60px;
+            overflow-y: auto;
+            .bullet{
+                border: 1px solid $grey-6;
+                background: $grey-7;
+                height: 22px;
+                border-radius: 11px;
+                color: $black-1;
+                font-size: 14px;
+                display: inline-block;
+                padding: 2px 25px 1px 8px;
+                margin: 5px 5px 0 0;
+    			position: relative;
+                .icon{
+                    @extend .rb-material-icons;
+                    font-size: 17px;
+    				position: absolute;
+    				right: 5px;
+    				top: 2px;
+                    &:hover{
+                        color: $red-1;
+                    }
+                    &:after{
+                        content: "close";
+                        font-style: normal;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .search-box{
+            outline:none;
+            color: $black-1;
+            border-radius: 4px;
+            border: 1px solid $blue-2;
+            padding: 5px 10px;
+            height: 34px;
+            width: 100%;
+            margin:0 0 15px 0;
+        }
+        .list-wrapper{
+            display: flex;
+            border: 1px solid $grey-1;
+            height: 300px;
+            overflow: hidden;
+        }
+        .quick-filters-list{
+            flex:1;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: $grey-7;
+            padding: 10px 0 10px 5px;
+            border-right: 1px solid $grey-9;
+            margin:0 40px 0 0;
+            .list-item{
+                padding:10px 0 10px 6px;
+                border-top: 1px solid $grey-8;
+                color: $blue-3;
+                cursor: pointer;
+                position: relative;
+                left: 1px;
+                font-size: 14px;
+                &:last-child{
+                    border-bottom: 1px solid $grey-8;
+                }
+                &.selected-item{
+                    border-right: 1px solid $white-0;
+                    background: $white-0;
+                    border-left: 1px solid $grey-8;
+                }
+            }
+        }
+        .list-container{
+            flex:5;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            flex-wrap: wrap;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 20px 0 20px 20px;
+            margin:0 20px 0 0;
+            .list-item{
+                text-transform: capitalize;
+                clear: both;
+                margin: 8px 30px 0 0;
+                p{
+                    margin: 0;
+                    cursor: pointer;
+                    display: table;
+                    .item-name{
+                        color: $black-3;
+                        float:left;
+                        margin-left:5px;
+                        line-height:17px;
+                        height:14px;
+                        font-size:12px;
+                    }
+                    .item-checkbox{
+                        float:left;
+                        width: 14px;
+                        height: 14px;
+                        display: inline-block;
+                        border-radius: 4px;
+                        border: solid 1px $grey-3;
+                        &.selected{
+                            background: $green-1;
+                            &:after{
+                                @extend .rb-material-icons;
+                                content: "check";
+                                font-size: 12px;
+                                color:$white-0;
+                                font-weight: 700;
+                                left: 0;
+                                position: relative;
+                                top: 0;
+                            }
+                        }
+                    }
                 }
             }
         }

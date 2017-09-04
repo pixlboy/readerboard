@@ -60,6 +60,7 @@ $fullscreen-first-cell-bg: #0a151d;
 
 .rb-table-wrapper{
     position: relative;
+    box-sizing: border-box;
     .scroll-wrapper{
         overflow-x: auto;
         margin-left: $first-col-width;

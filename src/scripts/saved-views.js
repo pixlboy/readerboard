@@ -1,5 +1,5 @@
 /**
- * Name : Marksheet Table Component
+ * Name : JTACWB Readerboard component
  * Author : Rachit Garg
  */
 'use strict';
@@ -64,8 +64,18 @@ export class SavedViews extends React.Component {
             }
         );
         return (
-            <div className="rb-saved-views-wrapper">
+            <div className={this.props.fullScreen ? 'rb-saved-views-wrapper fullscreen' : 'rb-saved-views-wrapper normalscreen'}>
+                <div className="save-view">
+                    {this.props.fullScreen ? null : <strong>Save View</strong>}
+                    <input type="text" ref={(ref) => { this.addItemInput = ref }} onKeyUp={this.handleKeyPress.bind(this)} placeholder="Enter Name" className="save-view-input" maxLength="15" />
+                    {this.props.fullScreen ?
+                        <input type="button" className="add-view-btn pull-left" onClick={this.onAddItem.bind(this)} value="Add" /> :
+                        <i className="add-view-icon pull-left" onClick={this.onAddItem.bind(this)}></i>
+                    }
+                </div>
+                <p className={duplicateNamesErr}>Name already exists</p>
                 <div className="saved-list">
+                    {this.props.fullScreen ? null : <strong>Saved Views</strong>}
                     <ul className="rb-list">
                         {this.state.totalItems.map((item, idx) => {
                             return (
@@ -78,11 +88,6 @@ export class SavedViews extends React.Component {
                         })}
                     </ul>
                 </div>
-                <div className="save-view">
-                    <input type="text" ref={(ref) => { this.addItemInput = ref }} onKeyUp={this.handleKeyPress.bind(this)} placeholder="Enter Name" className="save-view-input" maxLength="15" />
-                    <input type="button" className="add-view-btn pull-left" onClick={this.onAddItem.bind(this)} value="Add" />
-                </div>
-                <p className={duplicateNamesErr}>Name already exists</p>
             </div>
         );
     }

@@ -131,9 +131,10 @@
         let savedViewsClass = React.createFactory(Readerboard.SavedViews);
         let savedViewsElm = savedViewsClass({
             totalItems: preferences.views,
-            onSelectItemCb : onSelectItemCb,
+            onSelectItemCb: onSelectItemCb,
             onDeleteItemCb: onDeleteItemCb,
-            onAddItemCb: onAddItemCb
+            onAddItemCb: onAddItemCb,
+			fullScreen: true
         });
 
         let workgroupClass = React.createFactory(Readerboard.ConfigChooser);
@@ -222,10 +223,28 @@
             rows = composeConfig('rows');
             cols = composeConfig('cols');
 
-            let workgroupElm = workgroupClass({totalItems : totalcols, selectedItems : cols, onSelectItem : onSelectWorkgroupCb, tooltip : false});
+            let workgroupElm = workgroupClass({
+				totalItems : totalcols, 
+				selectedItems : cols, 
+				onSelectItem : onSelectWorkgroupCb, 
+				quickFilters: true,
+				search: true,
+				bullets: true,
+				tooltip: false,
+				fullScreen: false
+			});
             ReactDOM.render(workgroupElm, document.getElementById("cols"));
 
-            let attributeElm = attributeClass({totalItems : totalrows, selectedItems : rows, onSelectItem : onSelectAttributeCb, tooltip : true});
+            let attributeElm = attributeClass({
+				totalItems : totalrows, 
+				selectedItems : rows, 
+				onSelectItem : onSelectAttributeCb, 
+				quickFilters: true,
+				search: true,
+				bullets: true,
+				tooltip : true,
+				fullScreen: false
+			});
             ReactDOM.render(attributeElm, document.getElementById("rows"));
 
             ReactDOM.render(savedViewsElm, document.getElementById("savedViews"));

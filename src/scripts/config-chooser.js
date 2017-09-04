@@ -1,5 +1,5 @@
 /**
- * Name : Marksheet Table Component
+ * Name : Readerboard
  * Author : Rachit Garg
  */
 'use strict';
@@ -91,7 +91,7 @@ export class ConfigChooser extends React.Component {
             }
         );
         return (
-            <div className="rb-config-chooser">
+            <div className={this.props.fullScreen ? 'rb-config-chooser fullscreen' : 'rb-config-chooser normalscreen'}>
                 {this.props.bullets ?
                     <div className="selected-items">
                         {this.props.selectedItems.map((item, idx) => {

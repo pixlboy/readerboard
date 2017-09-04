@@ -1,9 +1,6 @@
-/**
- * Name : Marksheet Table Component
- * Author : Rachit Garg
- */
 .rb-table-wrapper {
-  position: relative; }
+  position: relative;
+  box-sizing: border-box; }
   .rb-table-wrapper .scroll-wrapper {
     overflow-x: auto;
     margin-left: 150px; }
@@ -134,104 +131,231 @@
     background: #d9edf7 !important;
     border-color: #8be5ff; }
 
-.rb-config-chooser .heading {
-  color: #7e7e7e;
-  font-size: 14px; }
-
-.rb-config-chooser .selected-items {
-  text-transform: capitalize;
-  margin: 5px 0 10px 0;
-  height: 60px;
-  overflow-y: auto; }
-  .rb-config-chooser .selected-items .bullet {
-    border: 1px solid #d6d6d6;
-    background: #f6f6f6;
-    height: 22px;
-    border-radius: 11px;
-    color: #40515e;
-    font-size: 14px;
-    display: inline-block;
-    padding: 2px 25px 1px 8px;
-    margin: 5px 5px 0 0;
-    position: relative; }
-    .rb-config-chooser .selected-items .bullet .icon {
-      position: absolute;
-      right: 5px;
-      top: 2px; }
-      .rb-config-chooser .selected-items .bullet .icon:hover {
-        color: #d04437; }
-      .rb-config-chooser .selected-items .bullet .icon:after {
-        content: "close";
-        font-style: normal;
-        cursor: pointer; }
-
-.rb-config-chooser .search-box {
-  padding: 5px 10px;
-  height: 34px;
-  width: 100%;
-  margin: 0 0 15px 0; }
-
-.rb-config-chooser .list-wrapper {
-  height: 18vh;
-  overflow: hidden; }
-
-.rb-config-chooser .quick-filters-list {
-  height: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  background: #f6f6f6;
-  padding: 10px 0 10px 5px;
-  border-right: 1px solid #e9e9e9;
-  margin: 0 40px 0 0; }
-  .rb-config-chooser .quick-filters-list .list-item {
-    padding: 10px 0 10px 6px;
-    border-top: 1px solid #bebebe;
-    color: #3493c2;
-    cursor: pointer;
-    position: relative;
-    left: 1px;
+.rb-config-chooser {
+  box-sizing: border-box; }
+  .rb-config-chooser.fullscreen .heading {
+    color: #7e7e7e;
     font-size: 14px; }
-    .rb-config-chooser .quick-filters-list .list-item:last-child {
-      border-bottom: 1px solid #bebebe; }
-    .rb-config-chooser .quick-filters-list .list-item.selected-item {
-      border-right: 1px solid #ffffff;
-      background: #ffffff;
-      border-left: 1px solid #bebebe; }
-
-.rb-config-chooser .list-container {
-  height: 100%;
-  overflow-y: auto;
-  padding: 10px 5px;
-  overflow-x: hidden; }
-  .rb-config-chooser .list-container .list-item {
+  .rb-config-chooser.fullscreen .selected-items {
     text-transform: capitalize;
-    clear: both;
-    margin: 0 30px 12px 0; }
-    .rb-config-chooser .list-container .list-item p {
-      margin: 0;
+    margin: 5px 0 10px 0;
+    height: 60px;
+    overflow-y: auto; }
+    .rb-config-chooser.fullscreen .selected-items .bullet {
+      border: 1px solid #d6d6d6;
+      background: #f6f6f6;
+      height: 22px;
+      border-radius: 11px;
+      color: #40515e;
+      font-size: 14px;
+      display: inline-block;
+      padding: 2px 25px 1px 8px;
+      margin: 5px 5px 0 0;
+      position: relative; }
+      .rb-config-chooser.fullscreen .selected-items .bullet .icon {
+        position: absolute;
+        right: 5px;
+        top: 2px; }
+        .rb-config-chooser.fullscreen .selected-items .bullet .icon:hover {
+          color: #d04437; }
+        .rb-config-chooser.fullscreen .selected-items .bullet .icon:after {
+          content: "close";
+          font-style: normal;
+          cursor: pointer; }
+  .rb-config-chooser.fullscreen .search-box {
+    outline: none;
+    color: #ffffff;
+    border: 1px solid #4e5c65;
+    padding: 5px 10px;
+    height: 34px;
+    width: 100%;
+    margin: 0 0 15px 0; }
+  .rb-config-chooser.fullscreen .list-wrapper {
+    height: 18vh;
+    overflow: hidden; }
+  .rb-config-chooser.fullscreen .quick-filters-list {
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background: #f6f6f6;
+    padding: 10px 0 10px 5px;
+    border-right: 1px solid #e9e9e9;
+    margin: 0 40px 0 0; }
+    .rb-config-chooser.fullscreen .quick-filters-list .list-item {
+      padding: 10px 0 10px 6px;
+      border-top: 1px solid #bebebe;
+      color: #3493c2;
       cursor: pointer;
-      display: table; }
-      .rb-config-chooser .list-container .list-item p .item-name {
-        color: #ffffff;
-        float: left;
-        margin-left: 10px;
-        line-height: 1.6vw;
-        font-size: 1.2vw; }
-      .rb-config-chooser .list-container .list-item p .item-checkbox {
-        float: left; }
+      position: relative;
+      left: 1px;
+      font-size: 14px; }
+      .rb-config-chooser.fullscreen .quick-filters-list .list-item:last-child {
+        border-bottom: 1px solid #bebebe; }
+      .rb-config-chooser.fullscreen .quick-filters-list .list-item.selected-item {
+        border-right: 1px solid #ffffff;
+        background: #ffffff;
+        border-left: 1px solid #bebebe; }
+  .rb-config-chooser.fullscreen .list-container {
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px 5px;
+    overflow-x: hidden; }
+    .rb-config-chooser.fullscreen .list-container .list-item {
+      text-transform: capitalize;
+      clear: both;
+      margin: 0 30px 12px 0; }
+      .rb-config-chooser.fullscreen .list-container .list-item p {
+        margin: 0;
+        cursor: pointer;
+        display: table; }
+        .rb-config-chooser.fullscreen .list-container .list-item p .item-name {
+          color: #ffffff;
+          float: left;
+          margin-left: 10px;
+          line-height: 1.6vw;
+          font-size: 1.2vw; }
+        .rb-config-chooser.fullscreen .list-container .list-item p .item-checkbox {
+          width: 1.6vw;
+          height: 1.6vw;
+          display: inline-block;
+          border-radius: 4px;
+          border: solid 2px #ffffff;
+          float: left; }
+          .rb-config-chooser.fullscreen .list-container .list-item p .item-checkbox.selected {
+            background: #4cc65d; }
+            .rb-config-chooser.fullscreen .list-container .list-item p .item-checkbox.selected:after {
+              content: "check";
+              font-size: 1.4vw;
+              color: #ffffff;
+              font-weight: 700;
+              left: 0;
+              position: relative;
+              top: 0; }
+  .rb-config-chooser.normalscreen .heading {
+    color: #7e7e7e;
+    font-size: 14px; }
+  .rb-config-chooser.normalscreen .selected-items {
+    text-transform: capitalize;
+    margin: 5px 0 10px 0;
+    height: 60px;
+    overflow-y: auto; }
+    .rb-config-chooser.normalscreen .selected-items .bullet {
+      border: 1px solid #d6d6d6;
+      background: #f6f6f6;
+      height: 22px;
+      border-radius: 11px;
+      color: #40515e;
+      font-size: 14px;
+      display: inline-block;
+      padding: 2px 25px 1px 8px;
+      margin: 5px 5px 0 0;
+      position: relative; }
+      .rb-config-chooser.normalscreen .selected-items .bullet .icon {
+        font-size: 17px;
+        position: absolute;
+        right: 5px;
+        top: 2px; }
+        .rb-config-chooser.normalscreen .selected-items .bullet .icon:hover {
+          color: #d04437; }
+        .rb-config-chooser.normalscreen .selected-items .bullet .icon:after {
+          content: "close";
+          font-style: normal;
+          cursor: pointer; }
+  .rb-config-chooser.normalscreen .search-box {
+    outline: none;
+    color: #40515e;
+    border-radius: 4px;
+    border: 1px solid #2c86b3;
+    padding: 5px 10px;
+    height: 34px;
+    width: 100%;
+    margin: 0 0 15px 0; }
+  .rb-config-chooser.normalscreen .list-wrapper {
+    display: flex;
+    border: 1px solid #bcbcbc;
+    height: 300px;
+    overflow: hidden; }
+  .rb-config-chooser.normalscreen .quick-filters-list {
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #f6f6f6;
+    padding: 10px 0 10px 5px;
+    border-right: 1px solid #e9e9e9;
+    margin: 0 40px 0 0; }
+    .rb-config-chooser.normalscreen .quick-filters-list .list-item {
+      padding: 10px 0 10px 6px;
+      border-top: 1px solid #bebebe;
+      color: #3493c2;
+      cursor: pointer;
+      position: relative;
+      left: 1px;
+      font-size: 14px; }
+      .rb-config-chooser.normalscreen .quick-filters-list .list-item:last-child {
+        border-bottom: 1px solid #bebebe; }
+      .rb-config-chooser.normalscreen .quick-filters-list .list-item.selected-item {
+        border-right: 1px solid #ffffff;
+        background: #ffffff;
+        border-left: 1px solid #bebebe; }
+  .rb-config-chooser.normalscreen .list-container {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 20px 0 20px 20px;
+    margin: 0 20px 0 0; }
+    .rb-config-chooser.normalscreen .list-container .list-item {
+      text-transform: capitalize;
+      clear: both;
+      margin: 8px 30px 0 0; }
+      .rb-config-chooser.normalscreen .list-container .list-item p {
+        margin: 0;
+        cursor: pointer;
+        display: table; }
+        .rb-config-chooser.normalscreen .list-container .list-item p .item-name {
+          color: #4b5b68;
+          float: left;
+          margin-left: 5px;
+          line-height: 17px;
+          height: 14px;
+          font-size: 12px; }
+        .rb-config-chooser.normalscreen .list-container .list-item p .item-checkbox {
+          float: left;
+          width: 14px;
+          height: 14px;
+          display: inline-block;
+          border-radius: 4px;
+          border: solid 1px #ced4d9; }
+          .rb-config-chooser.normalscreen .list-container .list-item p .item-checkbox.selected {
+            background: #4cc65d; }
+            .rb-config-chooser.normalscreen .list-container .list-item p .item-checkbox.selected:after {
+              content: "check";
+              font-size: 12px;
+              color: #ffffff;
+              font-weight: 700;
+              left: 0;
+              position: relative;
+              top: 0; }
 
 .rb-saved-views-wrapper {
-  display: inline-block; }
-  .rb-saved-views-wrapper .duplicate-name {
+  display: inline-block;
+  box-sizing: border-box; }
+  .rb-saved-views-wrapper.fullscreen .duplicate-name {
     font-size: 1.2vw;
     color: #d04437;
-    margin: 5px 0 0 0; }
-  .rb-saved-views-wrapper .save-view {
+    margin: 5px; }
+  .rb-saved-views-wrapper.fullscreen .save-view {
     display: flex;
     align-items: center;
     overflow: hidden;
     position: relative; }
-    .rb-saved-views-wrapper .save-view .save-view-input {
+    .rb-saved-views-wrapper.fullscreen .save-view .save-view-input {
+      outline: none;
+      color: #ffffff;
       width: 16vw;
       float: left;
       padding: 5px 10px;
@@ -241,9 +365,9 @@
       border-radius: 0 !important;
       color: #ffffff;
       font-size: 1.2vw; }
-  .rb-saved-views-wrapper .saved-list {
-    margin: 0 0 10px 0; }
-    .rb-saved-views-wrapper .saved-list .list-item {
+  .rb-saved-views-wrapper.fullscreen .saved-list {
+    margin: 15px 0 0 0; }
+    .rb-saved-views-wrapper.fullscreen .saved-list .list-item {
       position: relative;
       display: flex;
       align-items: center;
@@ -253,25 +377,101 @@
       padding: 4px;
       overflow: hidden;
       margin-bottom: 4px; }
-      .rb-saved-views-wrapper .saved-list .list-item .selector {
+      .rb-saved-views-wrapper.fullscreen .saved-list .list-item .selector {
         width: 1vw;
         height: 1vw;
         border: 2px solid #bcbcbc;
         border-radius: 50%;
         margin: 0 8px 0 0; }
-      .rb-saved-views-wrapper .saved-list .list-item.current-view .selector {
+      .rb-saved-views-wrapper.fullscreen .saved-list .list-item.current-view .selector {
         border: 3px solid #4cc65d; }
-      .rb-saved-views-wrapper .saved-list .list-item .item-name {
+      .rb-saved-views-wrapper.fullscreen .saved-list .list-item .item-name {
         font-size: 1.2vw; }
-      .rb-saved-views-wrapper .saved-list .list-item .delete-btn {
+      .rb-saved-views-wrapper.fullscreen .saved-list .list-item .delete-btn {
         font-style: normal;
         color: #ffffff;
         position: absolute;
         right: 0.2vw; }
-        .rb-saved-views-wrapper .saved-list .list-item .delete-btn:after {
+        .rb-saved-views-wrapper.fullscreen .saved-list .list-item .delete-btn:after {
           content: "delete";
           font-size: 1vw; }
-        .rb-saved-views-wrapper .saved-list .list-item .delete-btn:hover {
+        .rb-saved-views-wrapper.fullscreen .saved-list .list-item .delete-btn:hover {
+          color: #d04437; }
+  .rb-saved-views-wrapper.normalscreen .duplicate-name {
+    font-size: 12px;
+    color: #d04437;
+    margin: 5px; }
+  .rb-saved-views-wrapper.normalscreen .save-view {
+    overflow: hidden;
+    padding: 0 5px; }
+    .rb-saved-views-wrapper.normalscreen .save-view strong {
+      display: block;
+      margin: 5px 0;
+      color: #40515e;
+      font-size: 14px; }
+    .rb-saved-views-wrapper.normalscreen .save-view .save-view-input {
+      outline: none;
+      color: #40515e;
+      width: calc(100% - 28px);
+      float: left;
+      padding: 1px 5px;
+      height: 24px;
+      margin: 0 5px 0 0;
+      border: 1px solid rgba(63, 81, 94, 0.2) !important;
+      border-radius: 0 !important; }
+    .rb-saved-views-wrapper.normalscreen .save-view .add-view-icon {
+      font-style: normal;
+      cursor: pointer;
+      background: #3493c2;
+      border-radius: 50%;
+      height: 21px;
+      width: 21px;
+      display: inline-block;
+      text-align: center;
+      vertical-align: middle;
+      padding: 2px;
+      margin: 2px 0 0 0; }
+      .rb-saved-views-wrapper.normalscreen .save-view .add-view-icon:after {
+        content: "add";
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 16px; }
+  .rb-saved-views-wrapper.normalscreen .saved-list {
+    margin: 15px 0 0 0; }
+    .rb-saved-views-wrapper.normalscreen .saved-list strong {
+      display: block;
+      margin: 5px;
+      color: #40515e;
+      font-size: 14px; }
+    .rb-saved-views-wrapper.normalscreen .saved-list .list-item {
+      cursor: pointer;
+      color: #40515e;
+      clear: both;
+      padding: 4px 8px;
+      border-top: 1px solid rgba(63, 81, 94, 0.2);
+      height: 25px;
+      margin: 0; }
+      .rb-saved-views-wrapper.normalscreen .saved-list .list-item .selector {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border: 1px solid #bcbcbc;
+        border-radius: 50%;
+        float: left;
+        margin: 3px 6px 0 0; }
+      .rb-saved-views-wrapper.normalscreen .saved-list .list-item.current-view .selector {
+        border: 3px solid #4cc65d; }
+      .rb-saved-views-wrapper.normalscreen .saved-list .list-item .item-name {
+        float: left;
+        font-size: 14px; }
+      .rb-saved-views-wrapper.normalscreen .saved-list .list-item .delete-btn {
+        float: right;
+        font-style: normal;
+        font-size: 17px;
+        color: #7e7e7e; }
+        .rb-saved-views-wrapper.normalscreen .saved-list .list-item .delete-btn:after {
+          content: "delete"; }
+        .rb-saved-views-wrapper.normalscreen .saved-list .list-item .delete-btn:hover {
           color: #d04437; }
 
 /*Tooltip content and position*/
@@ -321,12 +521,10 @@
 .rb-block {
   display: block; }
 
-.rb-material-icons, .rb-table-wrapper .empty-row .body-cell .icon, .rb-config-chooser .selected-items .bullet .icon, .rb-saved-views-wrapper .saved-list .list-item .delete-btn, .rb-checkbox.selected:after, .rb-config-chooser .list-container .list-item p .selected.item-checkbox:after {
+.rb-material-icons, .rb-table-wrapper .empty-row .body-cell .icon, .rb-config-chooser.fullscreen .selected-items .bullet .icon, .rb-config-chooser.fullscreen .list-container .list-item p .item-checkbox.selected:after, .rb-config-chooser.normalscreen .selected-items .bullet .icon, .rb-config-chooser.normalscreen .list-container .list-item p .item-checkbox.selected:after, .rb-saved-views-wrapper.fullscreen .saved-list .list-item .delete-btn, .rb-saved-views-wrapper.normalscreen .save-view .add-view-icon, .rb-saved-views-wrapper.normalscreen .saved-list .list-item .delete-btn {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 17px;
-  /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -351,25 +549,3 @@
 
 .rb-error-msg {
   color: #d04437; }
-
-.rb-input, .rb-config-chooser .search-box, .rb-saved-views-wrapper .save-view .save-view-input {
-  outline: none;
-  color: #ffffff;
-  border: 1px solid #4e5c65; }
-
-.rb-checkbox, .rb-config-chooser .list-container .list-item p .item-checkbox {
-  width: 1.6vw;
-  height: 1.6vw;
-  display: inline-block;
-  border-radius: 4px;
-  border: solid 2px #ffffff; }
-  .rb-checkbox.selected, .rb-config-chooser .list-container .list-item p .selected.item-checkbox {
-    background: #4cc65d; }
-    .rb-checkbox.selected:after, .rb-config-chooser .list-container .list-item p .selected.item-checkbox:after {
-      content: "check";
-      font-size: 1.4vw;
-      color: #ffffff;
-      font-weight: 700;
-      left: 0;
-      position: relative;
-      top: 0; }
