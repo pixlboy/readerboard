@@ -203,12 +203,17 @@
             if(matrix === 'rows'){
                 let config = _.filter(preferences.views, ['default', true])[0].config.selectedRows;
                 for(let i=0;i<config.length;i++){
-                    selection.push(_.filter(totalrows, ['identifier', config[i]])[0])
+                    if(_.filter(totalAttributes, ['identifier', config[i]]).length > 0){
+                        selection.push(_.filter(totalAttributes, ['identifier', config[i]])[0]);
+                    }
                 }
             } else if (matrix === 'cols'){
                 let config = _.filter(preferences.views, ['default', true])[0].config.selectedCols;
                 for(let i=0;i<config.length;i++){
-                    selection.push(_.filter(totalcols, ['identifier', config[i]])[0])
+                    if(_.filter(totalWorkgroups, ['identifier', config[i]]).length > 0){
+                        selection.push(_.filter(totalWorkgroups, ['identifier', config[i]])[0]);
+                    }
+
                 }
             }
             return selection;
